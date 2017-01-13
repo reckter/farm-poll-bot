@@ -24,5 +24,5 @@ class GroupCollection: MongoCollection<Group> by KMongoConfig.database.getCollec
         return ret
     }
 
-    fun findByPollingDay(day: Int) = this.find("""{"startPollingOnDay": ${day.json}}""")
+    fun findByPollingDay(day: Int) = this.find("""{"startPollingOnDay": ${day.json}, "enableAutoPolling": true}""")
 }

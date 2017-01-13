@@ -45,6 +45,7 @@ class SettingsBot(
                     button(text = day, callBackData = "pollingDay#${message.chat.id}#$i")
                     nextRow()
                 }
+                button(text = "disable automatic polling", callBackData="pollingDay#${message.chat.id}#disable")
             }
         }
     }
@@ -67,7 +68,11 @@ class SettingsBot(
         }
 
 
-        group = group.copy(startPollingOnDay = data[2].toInt())
+        if(data[2] == "disable") {
+            group = group.copy(enableAutoPolling = false)
+        } else {
+            group = group.copy(startPollingOnDay = data[2].toInt(), enableAutoPolling = true)
+        }
 
         groupCollection.save(group)
 
