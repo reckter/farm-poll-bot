@@ -38,10 +38,16 @@ class SettingsBot(
             }
             return
         }
-        groupCollection.getOrCreate(message.chat)
+        val group = groupCollection.getOrCreate(message.chat)
         telegram.sendMessage {
             chat(message.chat)
-            text("choose your polling day \n(The day the poll will be posted for the week after)")
+            var text = "choose your polling day"
+            if(group.enableAutoPolling) {
+               text += "\n currently on day: ${DAYS_OF_THE_WEEK[group.startPollingOnDay]}"
+            }else {
+                text += "disabled"
+            }
+            text("$text\n(The day the poll will be posted for the week after)")
             buildInlineKeyboard {
                 DAYS_OF_THE_WEEK.forEachIndexed { i, day ->
                     button(text = day, callBackData = "pollingDay#${message.chat.id}#$i")
@@ -77,6 +83,25 @@ class SettingsBot(
             group = group.copy(startPollingOnDay = data[2].toInt(), enableAutoPolling = true)
             telegram.answerCallback(callbackQuery, "Set day to ${DAYS_OF_THE_WEEK[data[2].toInt()]}")
         }
+
+
+        telegram.sendEditMessage(callbackQuery.message!!){
+            var text = "choose your polling day"
+            if(group.enableAutoPolling) {
+                text += "\n currently on day: ${DAYS_OF_THE_WEEK[group.startPollingOnDay]}"
+            }else {
+                text += "disabled"
+            }
+            text("$text\n(The day the poll will be posted for the week after)")
+            buildInlineKeyboard {
+                DAYS_OF_THE_WEEK.forEachIndexed { i, day ->
+                    button(text = day, callBackData = "pollingDay#${callbackQuery.message!!.chat.id}#$i")
+                    nextRow()
+                }
+                button(text = "disable automatic polling", callBackData="pollingDay#${callbackQuery.message!!.chat.id}#disable")
+            }
+        }
+
 
         groupCollection.save(group)
 
