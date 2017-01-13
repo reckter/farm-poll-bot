@@ -45,7 +45,7 @@ class SettingsBot(
             if(group.enableAutoPolling) {
                text += "\n currently on day: ${DAYS_OF_THE_WEEK[group.startPollingOnDay]}"
             }else {
-                text += "disabled"
+                text += "\ndisabled"
             }
             text("$text\n(The day the poll will be posted for the week after)")
             buildInlineKeyboard {
@@ -90,7 +90,7 @@ class SettingsBot(
             if(group.enableAutoPolling) {
                 text += "\n currently on day: ${DAYS_OF_THE_WEEK[group.startPollingOnDay]}"
             }else {
-                text += "disabled"
+                text += "\ndisabled"
             }
             text("$text\n(The day the poll will be posted for the week after)")
             buildInlineKeyboard {
