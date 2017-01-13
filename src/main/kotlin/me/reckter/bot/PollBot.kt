@@ -70,6 +70,7 @@ class PollBot(
             poll.posts.add(Post(result.inlineMessageId!!))
             pollCollection.save(poll)
 
+            println("sharing poll..")
             updatePoll(poll)
         }
     }
@@ -104,8 +105,11 @@ class PollBot(
                     nextRow()
                 }
             }
+
+
         }
 
+        println("updating poll with ${poll.posts.size} posts.")
         poll.posts.forEach { post ->
 
             if (post.chat != null) {
@@ -178,6 +182,8 @@ class PollBot(
             text("creating poll...")
         }
         poll.posts.add(Post(message.id.toString(), message.chat.id))
+
+        println("creating poll")
 
         pollCollection.save(poll)
         updatePoll(poll)

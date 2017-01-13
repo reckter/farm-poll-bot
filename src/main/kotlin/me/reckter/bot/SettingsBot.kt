@@ -38,6 +38,7 @@ class SettingsBot(
             }
             return
         }
+        println("displaying settings")
         val group = groupCollection.getOrCreate(message.chat)
         telegram.sendMessage {
             chat(message.chat)
@@ -75,6 +76,8 @@ class SettingsBot(
             return
         }
 
+
+        println("changing settings")
 
         if(data[2] == "disable") {
             group = group.copy(enableAutoPolling = false)
