@@ -1,11 +1,13 @@
 package me.reckter.bot
 
 import me.reckter.GroupCollection
+import me.reckter.UserCollection
 import me.reckter.telegram.Telegram
 import me.reckter.telegram.listener.OnCallBack
 import me.reckter.telegram.listener.OnCommand
 import me.reckter.telegram.model.ChatStatus
 import me.reckter.telegram.model.Message
+import me.reckter.telegram.model.User
 import me.reckter.telegram.model.update.CallbackQuery
 import org.litote.kmongo.findOneById
 import org.litote.kmongo.save
@@ -28,7 +30,7 @@ class SettingsBot(
     fun setPollingDay(message: Message, args: List<String>) {
 
         val member = telegram.getChatMember(message.chat, message.user)
-        if ( member.status != ChatStatus.administrator
+        if (message.chat !is User && member.status != ChatStatus.administrator
                 && member.status != ChatStatus.creator) {
             telegram.sendMessage {
                 chat(message.chat)
@@ -61,7 +63,7 @@ class SettingsBot(
 
 
         val member = telegram.getChatMember(group.id, callbackQuery.from.id)
-        if (member.status != ChatStatus.administrator
+        if (callbackQuery.message?.chat !is User && member.status != ChatStatus.administrator
                 &&member.status != ChatStatus.creator) {
             telegram.answerCallback(callbackQuery, "Only an admin can change that!")
             return
