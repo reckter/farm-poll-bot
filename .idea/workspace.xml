@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="226fb8a4-9106-43e3-88a6-4254a6bff813" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="226fb8a4-9106-43e3-88a6-4254a6bff813" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupCollection.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GroupCollection.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/me/reckter/GroupCollection.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
@@ -106,13 +104,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SettingsBot.kt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SettingsBot.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/SettingsBot.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="73" column="85" lean-forward="false" selection-start-line="73" selection-start-column="68" selection-end-line="73" selection-end-column="85" />
+            <state relative-caret-position="131">
+              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding>
-                <element signature="e#24#392#0" expanded="true" />
+                <element signature="e#24#463#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,8 +157,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/kotlin/me/reckter/KMongoConfig.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/me/reckter/user/Group.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/SettingsBot.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/me/reckter/GroupCollection.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/SettingsBot.kt" />
       </list>
     </option>
   </component>
@@ -808,12 +806,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1484234637789</updated>
-      <workItem from="1484234642391" duration="14230000" />
+      <workItem from="1484234642391" duration="14540000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14230000" />
+    <option name="totallyTimeSpent" value="14540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -1465,16 +1463,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/SettingsBot.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="73" column="85" lean-forward="false" selection-start-line="73" selection-start-column="68" selection-end-line="73" selection-end-column="85" />
-          <folding>
-            <element signature="e#24#392#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/me/reckter/user/User.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1489,6 +1477,16 @@
           <caret line="26" column="103" lean-forward="false" selection-start-line="26" selection-start-column="103" selection-end-line="26" selection-end-column="103" />
           <folding>
             <element signature="e#20#256#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/SettingsBot.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#463#0" expanded="true" />
           </folding>
         </state>
       </provider>

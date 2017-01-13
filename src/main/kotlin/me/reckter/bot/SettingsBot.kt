@@ -72,12 +72,13 @@ class SettingsBot(
 
         if(data[2] == "disable") {
             group = group.copy(enableAutoPolling = false)
+            telegram.answerCallback(callbackQuery, "disabled auto polling")
         } else {
             group = group.copy(startPollingOnDay = data[2].toInt(), enableAutoPolling = true)
+            telegram.answerCallback(callbackQuery, "Set day to ${DAYS_OF_THE_WEEK[data[2].toInt()]}")
         }
 
         groupCollection.save(group)
 
-        telegram.answerCallback(callbackQuery, "Set day to ${DAYS_OF_THE_WEEK[data[2].toInt()]}")
     }
 }
