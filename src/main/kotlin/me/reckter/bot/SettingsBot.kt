@@ -43,7 +43,7 @@ class SettingsBot(
             chat(message.chat)
             var text = "choose your polling day"
             if(group.enableAutoPolling) {
-               text += "\n currently on day: ${DAYS_OF_THE_WEEK[group.startPollingOnDay]}"
+               text += "\ncurrently on day: ${DAYS_OF_THE_WEEK[group.startPollingOnDay]}"
             }else {
                 text += "\ndisabled"
             }
