@@ -205,5 +205,7 @@ class SettingsBot(
 
         groupCollection.save(group)
 
+        updateSettings(callbackQuery.message!!, group)
+
     }
 }
