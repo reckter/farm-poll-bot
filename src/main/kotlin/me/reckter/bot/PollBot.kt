@@ -10,6 +10,7 @@ import me.reckter.telegram.Telegram
 import me.reckter.telegram.UpdateMessageBuilder
 import me.reckter.telegram.listener.OnCallBack
 import me.reckter.telegram.listener.OnCommand
+import me.reckter.telegram.model.ChatStatus
 import me.reckter.telegram.model.Message
 import me.reckter.telegram.model.update.CallbackQuery
 import me.reckter.telegram.requests.InlineKeyboardButton
@@ -182,11 +183,24 @@ class PollBot(
         val poll = Poll(group.id, options)
         val message = telegram.sendMessage {
             recipient(group.id)
-            text("creating poll...")
+            text("When do you want to farm?\n\n(setting up one moment)")
         }
         poll.posts.add(Post(message.id.toString(), message.chat.id))
 
         println("creating poll")
+
+        group.member.map {
+            userCollection.findOneById(it)
+        }.filterNotNull().map {
+            telegram.getChatMember(it.id, group.id)
+        }.filter {
+            it.status != ChatStatus.left && it.status != ChatStatus.kicked
+        }.forEach {
+            telegram.sendMessage {
+                recipient(it.user.id)
+                text("hey a new Poll just has been started in a group! \n If you want to disable this notification change it in /settings")
+            }
+        }
 
         pollCollection.save(poll)
         updatePoll(poll)
