@@ -28,7 +28,7 @@ fun main(args: Array<String>) {
             userCollection,
             groupCollection)
 
-    val settingsBot = SettingsBot(telegram, groupCollection)
+    val settingsBot = SettingsBot(telegram, groupCollection, userCollection)
 
     telegram.addListener(pollBot)
     telegram.addListener(settingsBot)

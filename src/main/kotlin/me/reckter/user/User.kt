@@ -9,5 +9,6 @@ import org.litote.kmongo.MongoId
 data class User(
         @MongoId
         val id: String,
-        val name: String
+        val name: String,
+        val notify: Boolean = false
 )

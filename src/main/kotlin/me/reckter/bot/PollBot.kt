@@ -91,9 +91,12 @@ class PollBot(
             text(description)
             parseMode(ParseMode.MARKDOWN)
 
+
             buildInlineKeyboard {
 
                 button(text = "share", switchInlineQuery = poll.id)
+                nextRow()
+                button(text = "notify me in the future", callBackData = "subscribe")
                 nextRow()
 
                 poll.options.forEach { option ->
