@@ -96,7 +96,14 @@ class SettingsBot(
     @OnCommand("choosePollingDay", "settings")
     fun setPollingDay(message: Message, args: List<String>) {
 
-        val member = telegram.getChatMember(message.chat, message.user)
+        val member = telegram.getChatMember(message.cgit hat, message.user)
+        if(member == null) {
+            telegram.sendMessage {
+                chat(message.chat)
+                text("only an admin can do that!")
+            }
+            return
+        }
         if (message.chat !is User && member.status != ChatStatus.administrator
                 && member.status != ChatStatus.creator) {
             telegram.sendMessage {
@@ -183,7 +190,8 @@ class SettingsBot(
         var group = groupCollection.findOneById(data[1]) ?: return telegram.answerCallback(callbackQuery, "Did not find a group!")
 
 
-        val member = telegram.getChatMember(group.id, callbackQuery.from.id)
+        val member = telegram.getChatMember(group.id, callbackQuery.from.id) ?:
+                return telegram.answerCallback(callbackQuery, "Only an admin can change that!")
         if (callbackQuery.message?.chat !is User && member.status != ChatStatus.administrator
                 &&member.status != ChatStatus.creator) {
             telegram.answerCallback(callbackQuery, "Only an admin can change that!")

@@ -193,7 +193,7 @@ class PollBot(
             userCollection.findOneById(it)
         }.filterNotNull().map {
             telegram.getChatMember(it.id, group.id)
-        }.filter {
+        }.filterNotNull().filter {
             it.status != ChatStatus.left && it.status != ChatStatus.kicked
         }.forEach {
             telegram.sendMessage {

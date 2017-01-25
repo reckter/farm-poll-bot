@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: me.reckter:telegramBotApi:0.16.6">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/me/reckter/telegramBotApi/0.16.6/telegramBotApi-0.16.6.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/me/reckter/telegramBotApi/0.16.6/telegramBotApi-0.16.6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/me/reckter/telegramBotApi/0.16.6/telegramBotApi-0.16.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
