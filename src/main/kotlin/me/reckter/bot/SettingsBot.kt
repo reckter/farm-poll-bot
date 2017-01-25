@@ -96,7 +96,7 @@ class SettingsBot(
     @OnCommand("choosePollingDay", "settings")
     fun setPollingDay(message: Message, args: List<String>) {
 
-        val member = telegram.getChatMember(message.cgit hat, message.user)
+        val member = telegram.getChatMember(message.chat, message.user)
         if(member == null) {
             telegram.sendMessage {
                 chat(message.chat)

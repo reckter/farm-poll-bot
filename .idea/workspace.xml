@@ -2,38 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="226fb8a4-9106-43e3-88a6-4254a6bff813" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__me_reckter_telegramBotApi_0_16_5.xml" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$createPoll$4$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$3.class" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/META-INF/farm-poll-bot.kotlin_module" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/META-INF/farmpollbot.kotlin_module" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/GroupCollection.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/KMongoConfig$Companion.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/KMongoConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/PollCollection.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/UserCollection.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/MainKt$main$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/MainKt.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$createPoll$message$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$updatePoll$updater$1$$special$$inlined$map$lambda$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$updatePoll$updater$1$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$updatePoll$updater$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$voteCallBack$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$2$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$subscribeCallback$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$updateSettings$1$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$updateSettings$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBotKt.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/poll/Poll.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/poll/Post.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/poll/Vote.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/user/Group.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/user/User.class" afterPath="" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__me_reckter_telegramBotApi_0_16_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__me_reckter_telegramBotApi_0_16_6.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$2$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$3$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/MainKt$main$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/MainKt$main$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/MainKt.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/MainKt.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$2.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$createPoll$message$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$createPoll$message$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$updatePoll$updater$1$$special$$inlined$map$lambda$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$updatePoll$updater$1$$special$$inlined$map$lambda$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$updatePoll$updater$1$2.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$updatePoll$updater$1$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$updatePoll$updater$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$updatePoll$updater$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$voteCallBack$3.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$voteCallBack$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$2.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$updateSettings$1$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$updateSettings$1$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$updateSettings$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$updateSettings$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farmpollbot.iml" afterPath="$PROJECT_DIR$/farmpollbot.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/PollBot.kt" afterPath="$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/PollBot.kt" />
@@ -114,7 +103,7 @@
       <file leaf-file-name="SettingsBot.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/SettingsBot.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
+            <state relative-caret-position="208">
               <caret line="98" column="53" lean-forward="false" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
               <folding>
                 <element signature="e#24#492#0" expanded="true" />
@@ -947,21 +936,21 @@
       <workItem from="1484234642391" duration="15852000" />
       <workItem from="1484394700696" duration="3925000" />
       <workItem from="1484555987557" duration="10000" />
-      <workItem from="1485332641495" duration="611000" />
+      <workItem from="1485332641495" duration="904000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20398000" />
+    <option name="totallyTimeSpent" value="20691000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -970,7 +959,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3891089" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3891089" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2571885" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1661,7 +1650,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/SettingsBot.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
+        <state relative-caret-position="208">
           <caret line="98" column="53" lean-forward="false" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
           <folding>
             <element signature="e#24#492#0" expanded="true" />
