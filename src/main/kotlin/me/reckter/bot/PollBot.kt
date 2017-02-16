@@ -189,13 +189,17 @@ class PollBot(
 
         println("creating poll")
 
-        group.member.map {
+        val notifies = group.member.map {
             userCollection.findOneById(it)
         }.filterNotNull().map {
             telegram.getChatMember(it.id, group.id)
         }.filterNotNull().filter {
             it.status != ChatStatus.left && it.status != ChatStatus.kicked
-        }.forEach {
+        }
+
+        println("notifying ${notifies.size} people")
+
+        notifies.forEach {
             telegram.sendMessage {
                 recipient(it.user.id)
                 text("hey a new Poll just has been started in a group! \n If you want to disable this notification change it in /settings")
