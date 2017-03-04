@@ -239,12 +239,12 @@ class SettingsBot(
             if (chat == null) {
                 "<chat deleted>"
             } else when (chat) {
-                is GroupChat -> "${chat.title}: ${chatMember!!.status}"
+                is GroupChat -> "${chat.title}[${chat.id}]: ${chatMember!!.status}"
                 is User -> {
                     val name = "${chat.fistName} ${chat.lastName ?: ""}"
                     val nick = if (chat.username == null) "" else
                         " (${chat.username})"
-                    name + nick
+                    name + nick + "[${chat.id}]"
                 }
                 is Channel -> "channel: @${chat.id}: ${chatMember!!.status}"
                 else -> "uhhh error! nothing found that this could be!"
@@ -272,12 +272,12 @@ class SettingsBot(
             text = "<chat deleted>"
         } else {
             text = when (chat) {
-                is GroupChat -> "Group: ${chat.title}[${chat.id}]"
+                is GroupChat -> "Group: ${chat.title}"
                 is User -> {
                     val name = "User: ${chat.fistName} ${chat.lastName ?: ""}"
                     val nick = if (chat.username == null) "" else
                         " (${chat.username})"
-                    name + nick + "[${chat.id}]"
+                    name + nick
                 }
                 is Channel -> "channel: @${chat.id}"
                 else -> "uhhh error! nothing found that this could be!"
