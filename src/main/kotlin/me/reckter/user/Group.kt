@@ -10,6 +10,6 @@ data class Group(
         @MongoId
         val id: String,
         val startPollingOnDay: Int, // 0 = Monday ... 7 = Sunday
-        val enableAutoPolling: Boolean = false, // 0 = Monday ... 7 = Sunday
+        val enableAutoPolling: Boolean = false,
         val member: MutableList<String> = mutableListOf()
 )

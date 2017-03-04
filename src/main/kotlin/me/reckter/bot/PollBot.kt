@@ -18,6 +18,7 @@ import me.reckter.telegram.requests.InlineKeyboardMarkup
 import me.reckter.telegram.requests.ParseMode
 import me.reckter.telegram.requests.inlineMode.*
 import me.reckter.user.Group
+import me.reckter.user.User
 import org.litote.kmongo.findOneById
 import org.litote.kmongo.save
 import java.time.LocalDate
@@ -191,18 +192,20 @@ class PollBot(
 
         val notifies = group.member.map {
             userCollection.findOneById(it)
-        }.filterNotNull().map {
-            telegram.getChatMember(it.id, group.id)
-        }.filterNotNull().filter {
-            it.status != ChatStatus.left && it.status != ChatStatus.kicked
-        }
+        }.filterNotNull()
+                .filter(User::notify)
+                .map {
+                    telegram.getChatMember(it.id, group.id)
+                }.filterNotNull().filter {
+                    it.status != ChatStatus.left && it.status != ChatStatus.kicked
+                }
 
         println("notifying ${notifies.size} people")
 
         notifies.forEach {
             telegram.sendMessage {
                 recipient(it.user.id)
-                text("hey a new Poll just has been started in a group! \n If you want to disable this notification change it in /settings")
+                text("hey a new Poll just has been started in a group!\nIf you want to disable this notification change it in /settings")
             }
         }
 

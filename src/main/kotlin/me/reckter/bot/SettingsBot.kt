@@ -5,9 +5,7 @@ import me.reckter.UserCollection
 import me.reckter.telegram.Telegram
 import me.reckter.telegram.listener.OnCallBack
 import me.reckter.telegram.listener.OnCommand
-import me.reckter.telegram.model.ChatStatus
-import me.reckter.telegram.model.Message
-import me.reckter.telegram.model.User
+import me.reckter.telegram.model.*
 import me.reckter.telegram.model.update.CallbackQuery
 import me.reckter.user.Group
 import org.litote.kmongo.findOneById
@@ -44,7 +42,7 @@ class SettingsBot(
 
     @OnCallBack
     fun subscribeCallback(callbackQuery: CallbackQuery) {
-        if(!(callbackQuery.data?.startsWith("subscribe") ?: false)) {
+        if (!(callbackQuery.data?.startsWith("subscribe") ?: false)) {
             return
         }
 
@@ -66,7 +64,7 @@ class SettingsBot(
 
         telegram.answerCallback(callbackQuery, "Will notify you in the future!")
 
-        if(callbackQuery.data?.contains("update") ?: false) {
+        if (callbackQuery.data?.contains("update") ?: false) {
             updateSettings(callbackQuery.message!!, groupCollection.getOrCreate(callbackQuery.message!!.chat), user)
         }
 
@@ -75,7 +73,7 @@ class SettingsBot(
     @OnCallBack
     fun unsubscribeCallback(callbackQuery: CallbackQuery) {
 
-        if(!(callbackQuery.data?.startsWith("unsubscribe") ?: false)) {
+        if (!(callbackQuery.data?.startsWith("unsubscribe") ?: false)) {
             return
         }
 
@@ -87,7 +85,7 @@ class SettingsBot(
 
         telegram.answerCallback(callbackQuery, "Will not notify you in the future :(")
 
-        if(callbackQuery.data?.contains("update") ?: false) {
+        if (callbackQuery.data?.contains("update") ?: false) {
             updateSettings(callbackQuery.message!!, groupCollection.getOrCreate(callbackQuery.message!!.chat), user)
         }
 
@@ -97,7 +95,7 @@ class SettingsBot(
     fun setPollingDay(message: Message, args: List<String>) {
 
         val member = telegram.getChatMember(message.chat, message.user)
-        if(member == null) {
+        if (member == null) {
             telegram.sendMessage {
                 chat(message.chat)
                 text("only an admin can do that!")
@@ -118,14 +116,14 @@ class SettingsBot(
         telegram.sendMessage {
             chat(message.chat)
             var text = "choose your polling day"
-            if(group.enableAutoPolling) {
-               text += "\ncurrently on day: ${DAYS_OF_THE_WEEK[group.startPollingOnDay]}"
-            }else {
+            if (group.enableAutoPolling) {
+                text += "\ncurrently on day: ${DAYS_OF_THE_WEEK[group.startPollingOnDay]}"
+            } else {
                 text += "\ndisabled"
             }
             text("$text\n(The day the poll will be posted for the week after)")
             buildInlineKeyboard {
-                if(message.chat is User) {
+                if (message.chat is User) {
                     val user = userCollection.getOrCreate(message.user)
                     if (user.notify) {
                         button(text = "disable Notifications", callBackData = "unsubscribe#update")
@@ -140,7 +138,7 @@ class SettingsBot(
                     button(text = day, callBackData = "pollingDay#${message.chat.id}#$i")
                     nextRow()
                 }
-                button(text = "disable automatic polling", callBackData="pollingDay#${message.chat.id}#disable")
+                button(text = "disable automatic polling", callBackData = "pollingDay#${message.chat.id}#disable")
             }
         }
     }
@@ -148,11 +146,11 @@ class SettingsBot(
 
     fun updateSettings(message: Message, group: Group, user: me.reckter.user.User? = null) {
 
-        telegram.sendEditMessage(message){
+        telegram.sendEditMessage(message) {
             var text = "choose your polling day"
-            if(group.enableAutoPolling) {
+            if (group.enableAutoPolling) {
                 text += "\n currently on day: ${DAYS_OF_THE_WEEK[group.startPollingOnDay]}"
-            }else {
+            } else {
                 text += "\ndisabled"
             }
             text("$text\n(The day the poll will be posted for the week after)")
@@ -160,7 +158,7 @@ class SettingsBot(
 
                 val user = user ?: userCollection.getOrCreate(message.user)
 
-                if(message.chat is User ) {
+                if (message.chat is User) {
                     if (user.notify) {
                         button(text = "disable Notifications", callBackData = "unsubscribe#update")
                     } else {
@@ -174,7 +172,7 @@ class SettingsBot(
                     button(text = day, callBackData = "pollingDay#${message.chat.id}#$i")
                     nextRow()
                 }
-                button(text = "disable automatic polling", callBackData="pollingDay#${message.chat.id}#disable")
+                button(text = "disable automatic polling", callBackData = "pollingDay#${message.chat.id}#disable")
             }
         }
 
@@ -193,7 +191,7 @@ class SettingsBot(
         val member = telegram.getChatMember(group.id, callbackQuery.from.id) ?:
                 return telegram.answerCallback(callbackQuery, "Only an admin can change that!")
         if (callbackQuery.message?.chat !is User && member.status != ChatStatus.administrator
-                &&member.status != ChatStatus.creator) {
+                && member.status != ChatStatus.creator) {
             telegram.answerCallback(callbackQuery, "Only an admin can change that!")
             return
         }
@@ -201,7 +199,7 @@ class SettingsBot(
 
         println("changing settings")
 
-        if(data[2] == "disable") {
+        if (data[2] == "disable") {
             group = group.copy(enableAutoPolling = false)
             telegram.answerCallback(callbackQuery, "disabled auto polling")
         } else {
@@ -215,5 +213,92 @@ class SettingsBot(
 
         updateSettings(callbackQuery.message!!, group)
 
+    }
+
+
+    @OnCommand("userInfo")
+    fun userInfo(message: Message, args: List<String>): Boolean {
+        if (message.chat.id != telegram.adminChat) return false
+
+        val user = userCollection.findOneById(args[1])
+
+        if (user == null) {
+            message.respond("user not found")
+            return true
+        }
+
+        val groups = groupCollection.findByUser(user.id)
+
+        val chatMembers = groups.map {
+            it to telegram.getChatMember(it.id, user.id)
+        }.filter { (_, chatMember) -> chatMember != null }
+
+
+        val text = chatMembers.joinToString("\n") { (group, chatMember) ->
+            val chat = telegram.getChat(group.id)
+            if (chat == null) {
+                "<chat deleted>"
+            } else when (chat) {
+                is GroupChat -> "${chat.title}: ${chatMember!!.status}"
+                is User -> {
+                    val name = "${chat.fistName} ${chat.lastName ?: ""}"
+                    val nick = if (chat.username == null) "" else
+                        " (${chat.username})"
+                    name + nick
+                }
+                is Channel -> "channel: @${chat.id}: ${chatMember!!.status}"
+                else -> "uhhh error! nothing found that this could be!"
+            }
+        }
+
+        message.respond("Found this about the user:\n${user.name}\n\ngroups:\n$text")
+        return true
+    }
+
+    @OnCommand("groupInfo")
+    fun groupInfo(message: Message, args: List<String>): Boolean {
+        if (message.chat.id != telegram.adminChat) return false
+
+        val group = groupCollection.findOneById(args[1])
+
+        if (group == null) {
+            message.respond("did not this group!")
+            return false
+        }
+        val chat = telegram.getChat(group.id)
+
+        val text: String
+        if (chat == null) {
+            text = "<chat deleted>"
+        } else {
+            text = when (chat) {
+                is GroupChat -> "Group: ${chat.title}[${chat.id}]"
+                is User -> {
+                    val name = "User: ${chat.fistName} ${chat.lastName ?: ""}"
+                    val nick = if (chat.username == null) "" else
+                        " (${chat.username})"
+                    name + nick + "[${chat.id}]"
+                }
+                is Channel -> "channel: @${chat.id}"
+                else -> "uhhh error! nothing found that this could be!"
+            }
+        }
+
+
+        val members: String
+        if(chat is GroupChat) {
+            members = group.member.map { userCollection.findOneById(it) }
+                    .filterNotNull()
+                    .map {
+                        it to telegram.getChatMember(group.id, it.id)
+                    }.joinToString("\n") { (user, chatMember) ->
+                "${user.name}[${user.id}]: ${chatMember!!.status}"
+            }
+        } else {
+            members = "private chat or channel"
+        }
+
+        message.respond(text + "\n\nmember:\n$members")
+        return true
     }
 }
