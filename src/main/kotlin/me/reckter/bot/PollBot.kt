@@ -155,12 +155,8 @@ class PollBot(
                 button(text = "share", switchInlineQuery = poll.id)
 
                 if(!poll.disableEventAndNotification) {
-                    if (chatId != null) {
-                        val chat = telegram.getChat(chatId)
-                        if (chat != null && chat is me.reckter.telegram.model.User) {
-                            button(text = "create Event", switchInlineQuery = "event#${poll.id}")
-                        }
-                    }
+
+                    button(text = "create Event", switchInlineQuery = "event#${poll.id}")
 
                     nextRow()
                     button(text = "notify me in the future", callBackData = "subscribe")

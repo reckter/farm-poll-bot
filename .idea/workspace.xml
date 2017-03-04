@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="226fb8a4-9106-43e3-88a6-4254a6bff813" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$createPoll$message$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$updatePoll$updater$1$$special$$inlined$map$lambda$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$updatePoll$updater$1$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$updatePoll$updater$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$voteCallBack$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/poll/Poll.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/poll/Post.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/me/reckter/poll/Vote.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$3$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$3$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$updateSettings$1$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$updateSettings$1$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/PollBot.kt" afterPath="$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/PollBot.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/kotlin/me/reckter/poll/Poll.kt" afterPath="$PROJECT_DIR$/src/main/kotlin/me/reckter/poll/Poll.kt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -41,8 +25,8 @@
       <file leaf-file-name="PollBot.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/PollBot.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="119" column="45" lean-forward="false" selection-start-line="119" selection-start-column="45" selection-end-line="119" selection-end-column="45" />
+            <state relative-caret-position="321">
+              <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
               <folding>
                 <element signature="e#24#1041#0" expanded="true" />
               </folding>
@@ -936,12 +920,12 @@
       <workItem from="1487255289976" duration="406000" />
       <workItem from="1487329234081" duration="347000" />
       <workItem from="1488567439778" duration="1888000" />
-      <workItem from="1488570218258" duration="6044000" />
+      <workItem from="1488570218258" duration="6564000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29903000" />
+    <option name="totallyTimeSpent" value="30423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -959,7 +943,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26923078" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -968,7 +952,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1369,8 +1353,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/PollBot.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="119" column="45" lean-forward="false" selection-start-line="119" selection-start-column="45" selection-end-line="119" selection-end-column="45" />
+        <state relative-caret-position="321">
+          <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
           <folding>
             <element signature="e#24#1041#0" expanded="true" />
           </folding>
