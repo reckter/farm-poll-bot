@@ -12,11 +12,13 @@ import java.util.*
 data class Poll(
         val groupId: String,
         val options: List<String>,
+        val question: String = "When do you want to farm?",
+        val disableEventAndNotification: Boolean = false,
+        val radioMode: Boolean = false,
         val votes: MutableList<Vote> = mutableListOf(),
         var posts: MutableList<Post> = mutableListOf(),
-        @MongoId
-        val id: String = UUID.randomUUID().toString()
-)
+        @MongoId val id: String = UUID.randomUUID().toString()
+        )
 
 data class Post(
         val id: String,

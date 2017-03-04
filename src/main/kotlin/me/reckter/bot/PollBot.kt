@@ -11,6 +11,7 @@ import me.reckter.telegram.UpdateMessageBuilder
 import me.reckter.telegram.listener.OnCallBack
 import me.reckter.telegram.listener.OnCommand
 import me.reckter.telegram.model.ChatStatus
+import me.reckter.telegram.model.InlineQuery
 import me.reckter.telegram.model.Message
 import me.reckter.telegram.model.update.CallbackQuery
 import me.reckter.telegram.requests.InlineKeyboardButton
@@ -40,47 +41,102 @@ class PollBot(
 
     init {
         telegram.inlineQueryHandler { query ->
-            val poll = pollCollection.findOneById(query.query)
+            if (query.query.startsWith("event")) {
+                val (_, pollid) = query.query.split("#")
 
-            if (poll == null) {
-                InlineQueryAnswer(query.id, results = mutableListOf())
-            } else {
+                val poll = pollCollection.findOneById(pollid)
+                if (poll == null) {
+                    InlineQueryAnswer(query.id, results = mutableListOf())
+                } else {
 
-                InlineQueryAnswer(query.id, results =
-                mutableListOf(
-                        InlineQueryResultArticle().apply {
-                            id = poll.id.take(10)
-                            title = "Farm poll"
-                            inputMessageContent = InputTextMessageContent().apply {
-                                text = "poll loading.."
-                            }
-                            replyMarkup = InlineKeyboardMarkup().apply {
-                                this.inlineKeyboard = mutableListOf(
-                                        mutableListOf(InlineKeyboardButton().apply {
-                                            this.text = "loading..."
-                                            this.callbackData = "loading"
-                                        })
-                                )
-                            }
-                        }
-                ), cacheTime = 0, isPersonal = true)
-            }
+                    InlineQueryAnswer(id = query.id,
+                            results =
+                            poll.options.map { option ->
+                                InlineQueryResultArticle().apply {
+                                    id = option
+                                    title = "$option - ${poll.votes.count { it.option == option }}"
+                                    inputMessageContent = InputTextMessageContent().apply {
+                                        text = "poll loading..."
+                                    }
+                                    replyMarkup = InlineKeyboardMarkup().apply {
+                                        this.inlineKeyboard = mutableListOf(
+                                                mutableListOf(InlineKeyboardButton().apply {
+                                                    this.text = "loading.."
+                                                    this.callbackData = "loading"
+                                                })
+                                        )
+                                    }
+                                }
+                            }.toMutableList(),
+                            cacheTime = 0,
+                            isPersonal = true
+                    )
+                }
+            } else getInlineQueryPoll(query)
         }.onResult { result ->
 
-            val poll = pollCollection.findOneById(result.query) ?: return@onResult
+            if (result.query.startsWith("event")) {
+                val (_, pollId) = result.query.split("#")
+                val oldPol = pollCollection.findOneById(pollId)
+                if (oldPol == null) { //well no group so *shrug*
+                    throw IllegalStateException("could not find an old Pol, but this should always be possible!")
+                } else {
+                    val poll = Poll(
+                            groupId = oldPol.groupId,
+                            options = listOf("yes", "maybe", "no"),
+                            posts = mutableListOf(Post(result.inlineMessageId!!)),
+                            question = "Farming on ${result.id}",
+                            disableEventAndNotification = true,
+                            radioMode = true
+                    )
+                    pollCollection.save(poll)
+                    updatePoll(poll)
+                }
+            } else {
 
-            poll.posts.add(Post(result.inlineMessageId!!))
-            pollCollection.save(poll)
+                val poll = pollCollection.findOneById(result.query) ?: return@onResult
 
-            println("sharing poll..")
-            updatePoll(poll)
+                poll.posts.add(Post(result.inlineMessageId!!))
+                pollCollection.save(poll)
+
+                println("sharing poll..")
+                updatePoll(poll)
+            }
+        }
+    }
+
+    fun getInlineQueryPoll(query: InlineQuery): InlineQueryAnswer {
+
+        val poll = pollCollection.findOneById(query.query)
+
+        return if (poll == null) {
+            InlineQueryAnswer(query.id, results = mutableListOf())
+        } else {
+
+            InlineQueryAnswer(query.id, results =
+            mutableListOf(
+                    InlineQueryResultArticle().apply {
+                        id = poll.id.take(10)
+                        title = poll.question
+                        inputMessageContent = InputTextMessageContent().apply {
+                            text = "poll loading..."
+                        }
+                        replyMarkup = InlineKeyboardMarkup().apply {
+                            this.inlineKeyboard = mutableListOf(
+                                    mutableListOf(InlineKeyboardButton().apply {
+                                        this.text = "loading..."
+                                        this.callbackData = "loading"
+                                    })
+                            )
+                        }
+                    }
+            ), cacheTime = 0, isPersonal = true)
         }
     }
 
     fun updatePoll(poll: Poll) {
-        val updater: me.reckter.telegram.UpdateMessageBuilder.() -> Unit = {
-
-            var description = "When do you want to farm?\n\n"
+        fun updater(chatId: String? = null): me.reckter.telegram.UpdateMessageBuilder.() -> Unit = {
+            var description = "${poll.question}\n\n"
 
             description += poll.options.map { option ->
 
@@ -97,8 +153,19 @@ class PollBot(
             buildInlineKeyboard {
 
                 button(text = "share", switchInlineQuery = poll.id)
-                nextRow()
-                button(text = "notify me in the future", callBackData = "subscribe")
+
+                if(!poll.disableEventAndNotification) {
+                    if (chatId != null) {
+                        val chat = telegram.getChat(chatId)
+                        if (chat != null && chat is me.reckter.telegram.model.User) {
+                            button(text = "create Event", switchInlineQuery = "event#${poll.id}")
+                        }
+                    }
+
+                    nextRow()
+                    button(text = "notify me in the future", callBackData = "subscribe")
+                }
+
                 nextRow()
 
                 poll.options.forEach { option ->
@@ -110,21 +177,18 @@ class PollBot(
                     nextRow()
                 }
             }
-
-
         }
 
         println("updating poll with ${poll.posts.size} posts.")
-        poll.posts.forEach { post ->
+        poll.posts.forEach { (id, chat) ->
 
-            if (post.chat != null) {
-                telegram.sendEditMessage(post.chat, post.id.toInt(), updater)
+            if (chat != null) {
+                telegram.sendEditMessage(chat, id.toInt(), updater(chat))
             } else {
-                telegram.sendEditMessage(post.id, updater)
+                telegram.sendEditMessage(id, updater())
             }
         }
     }
-
 
     @OnCallBack
     fun voteCallBack(callbackQuery: CallbackQuery) {
@@ -149,6 +213,10 @@ class PollBot(
         }) {
             group.member.add(user.id)
             groupCollection.save(group)
+        }
+
+        if(poll.radioMode) {
+            poll.votes.removeAll { it.tgUser == callbackQuery.from.id }
         }
 
         if (poll.votes.any { it.tgUser == user.id && it.option == option }) {
@@ -197,8 +265,8 @@ class PollBot(
                 .map {
                     telegram.getChatMember(it.id, group.id)
                 }.filterNotNull().filter {
-                    it.status != ChatStatus.left && it.status != ChatStatus.kicked
-                }
+            it.status != ChatStatus.left && it.status != ChatStatus.kicked
+        }
 
         println("notifying ${notifies.size} people")
 
