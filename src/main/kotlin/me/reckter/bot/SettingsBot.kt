@@ -291,7 +291,8 @@ class SettingsBot(
                     .filterNotNull()
                     .map {
                         it to telegram.getChatMember(group.id, it.id)
-                    }.joinToString("\n") { (user, chatMember) ->
+                    }.filter { (_, chatMember) -> chatMember != null }
+                    .joinToString("\n") { (user, chatMember) ->
                 "${user.name}[${user.id}]: ${chatMember!!.status}"
             }
         } else {
