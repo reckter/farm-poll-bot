@@ -1,5 +1,7 @@
 package me.reckter.bot
 
+import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.async
 import me.reckter.GroupCollection
 import me.reckter.PollCollection
 import me.reckter.UserCollection
@@ -134,7 +136,7 @@ class PollBot(
         }
     }
 
-    fun updatePoll(poll: Poll) {
+    fun updatePoll(poll: Poll) = async(CommonPool){
         fun updater(chatId: String? = null): me.reckter.telegram.UpdateMessageBuilder.() -> Unit = {
             var description = "${poll.question}\n\n"
 

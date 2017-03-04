@@ -16,6 +16,7 @@
             <option name="k2jvmCompilerArguments">
               <K2JVMCompilerArguments>
                 <option name="jvmTarget" value="1.6" />
+                <option name="coroutinesEnable" value="true" />
               </K2JVMCompilerArguments>
             </option>
             <option name="_commonCompilerArguments">
@@ -23,7 +24,7 @@
                 <option name="pluginClasspaths">
                   <array />
                 </option>
-                <option name="coroutinesWarn" value="true" />
+                <option name="coroutinesEnable" value="true" />
                 <option name="pluginOptions">
                   <array />
                 </option>
@@ -53,6 +54,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.jetbrains.kotlinx:kotlinx-coroutines-core:0.12" level="project" />
     <orderEntry type="library" name="Maven: me.reckter:telegramBotApi:0.16.9" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.retrofit2:retrofit:2.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.3.0" level="project" />
