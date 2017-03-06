@@ -1,8 +1,10 @@
 package me.reckter.poll
 
+import com.fasterxml.jackson.annotation.JsonValue
 import me.reckter.user.Group
 import me.reckter.user.User
 import org.litote.kmongo.MongoId
+import java.time.LocalDate
 import java.util.*
 
 /**
@@ -15,6 +17,8 @@ data class Poll(
         val question: String = "When do you want to farm?",
         val disableEventAndNotification: Boolean = false,
         val radioMode: Boolean = false,
+        val previousPollId: String? = null,
+        val date: LocalDate = LocalDate.now(),
         val votes: MutableList<Vote> = mutableListOf(),
         var posts: MutableList<Post> = mutableListOf(),
         @MongoId val id: String = UUID.randomUUID().toString()

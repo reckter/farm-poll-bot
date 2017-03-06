@@ -34,6 +34,7 @@ class SettingsBot(
         val text = """
 /settings - change the settings (if and when to auto post) (and subscription settings)
 /createPoll - creates a poll
+/latest - displays the latest poll for either this group or if used in a private chat for all groups the user is part in
 """
 
         message.respond(text)

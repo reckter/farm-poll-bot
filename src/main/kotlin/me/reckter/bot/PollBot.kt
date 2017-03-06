@@ -13,6 +13,7 @@ import me.reckter.telegram.UpdateMessageBuilder
 import me.reckter.telegram.listener.OnCallBack
 import me.reckter.telegram.listener.OnCommand
 import me.reckter.telegram.model.ChatStatus
+import me.reckter.telegram.model.GroupChat
 import me.reckter.telegram.model.InlineQuery
 import me.reckter.telegram.model.Message
 import me.reckter.telegram.model.update.CallbackQuery
@@ -28,6 +29,8 @@ import java.time.LocalDate
 import java.time.temporal.TemporalAdjusters
 import java.time.DayOfWeek
 import java.time.format.DateTimeFormatter
+import java.time.temporal.TemporalAdjuster
+import kotlin.system.measureNanoTime
 
 
 /**
@@ -89,7 +92,8 @@ class PollBot(
                             posts = mutableListOf(Post(result.inlineMessageId!!)),
                             question = "Farming on ${result.id}",
                             disableEventAndNotification = true,
-                            radioMode = true
+                            radioMode = true,
+                            previousPollId = pollId
                     )
                     pollCollection.save(poll)
                     updatePoll(poll)
@@ -136,19 +140,23 @@ class PollBot(
         }
     }
 
-    fun updatePoll(poll: Poll) = async(CommonPool){
+    fun Poll.toText(): String {
+
+        var description = "${this.question}\n\n"
+
+        description += this.options.map { option ->
+            var ret = "*$option*"
+            val count = this.votes.count { it.option == option }
+            if (count > 0) ret += " - $count"
+            "$ret\n${this.votes.filter { it.option == option }.joinToString("\n") { userCollection.findOneById(it.tgUser)?.name ?: "<no user>" }}"
+        }.joinToString("\n\n")
+        return description
+    }
+
+    fun updatePoll(poll: Poll) = async(CommonPool) {
         fun updater(chatId: String? = null): me.reckter.telegram.UpdateMessageBuilder.() -> Unit = {
-            var description = "${poll.question}\n\n"
 
-            description += poll.options.map { option ->
-
-                var ret = "*$option*"
-                val count = poll.votes.count { it.option == option }
-                if (count > 0) ret += " - $count"
-                "$ret\n${poll.votes.filter { it.option == option }.joinToString("\n") { userCollection.findOneById(it.tgUser)?.name ?: "<no user>" }}"
-            }.joinToString("\n\n")
-
-            text(description)
+            text(poll.toText())
             parseMode(ParseMode.MARKDOWN)
 
 
@@ -156,7 +164,7 @@ class PollBot(
 
                 button(text = "share", switchInlineQuery = poll.id)
 
-                if(!poll.disableEventAndNotification) {
+                if (!poll.disableEventAndNotification) {
 
                     button(text = "create Event", switchInlineQuery = "event#${poll.id}")
 
@@ -213,7 +221,7 @@ class PollBot(
             groupCollection.save(group)
         }
 
-        if(poll.radioMode) {
+        if (poll.radioMode) {
             poll.votes.removeAll { it.tgUser == callbackQuery.from.id }
         }
 
@@ -279,6 +287,55 @@ class PollBot(
         updatePoll(poll)
     }
 
+    @OnCommand("latest")
+    fun latest(message: Message, args: List<String>) {
+
+        val adjuster = TemporalAdjusters.previous(DayOfWeek.MONDAY)
+        val date = LocalDate.now().with(adjuster).with(adjuster)
+
+        val polls = when (message.chat) {
+            is GroupChat -> {
+                val group = groupCollection.getOrCreate(message.chat)
+                pollCollection.findByGroupAndAfter(group, date)
+            }
+            is me.reckter.telegram.model.User -> {
+                val groups = groupCollection.findByUser(message.user.id)
+                groups
+                        .filter {
+                            val member = telegram.getChatMember(it.id, message.user.id)
+                            member != null && member.status != ChatStatus.kicked && member.status != ChatStatus.left
+                        }
+                        .flatMap {
+                            pollCollection.findByGroupAndAfter(it, date)
+                        }
+            }
+            else -> {
+                message.respond("whoops that should not be possible! Please only use this command in a chat!")
+                return
+            }
+        }
+
+
+
+        val toPost = polls.filter { poll ->
+            polls.none { it.previousPollId == poll.id }
+        }
+
+        if(toPost.isEmpty()) {
+            message.respond("No current Polls (you cann access) found!")
+        }
+
+        toPost.forEach { poll ->
+            val newMessage = telegram.sendMessage {
+                chat(message.chat)
+                text(poll.toText())
+            }
+            poll.posts.add(Post(newMessage.id.toString(), newMessage.chat.id))
+            pollCollection.save(poll)
+            updatePoll(poll)
+        }
+
+    }
 
     @OnCommand("createPoll")
     fun createPoll(message: Message, args: List<String>) {
