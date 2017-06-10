@@ -23,7 +23,7 @@ class KMongoConfig {
             }
         }
 
-        val database: MongoDatabase = client.getDatabase("farm-bot-db") //normal java driver usage
+        val database: MongoDatabase = client.getDatabase("farm-poll-bot") //normal java driver usage
 
     }
 }
