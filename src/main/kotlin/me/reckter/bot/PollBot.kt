@@ -162,6 +162,7 @@ class PollBot(
                                 .replace("-", "")
                                 .replace("<", "")
                                 .replace(">", "")
+                                .replace("[^\\x20-\\x7e]", "")
                     }
             }"
         }.joinToString("\n\n")
