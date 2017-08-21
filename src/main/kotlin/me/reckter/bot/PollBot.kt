@@ -161,7 +161,6 @@ class PollBot(
                                 .replace("*", "\\*")
                                 .replace("-", "\\-")
                     }
-            }
             }"
         }.joinToString("\n\n")
         return description
