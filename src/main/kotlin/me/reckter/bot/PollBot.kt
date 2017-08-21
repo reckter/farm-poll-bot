@@ -148,7 +148,21 @@ class PollBot(
             var ret = "*$option*"
             val count = this.votes.count { it.option == option }
             if (count > 0) ret += " - $count"
-            "$ret\n${this.votes.filter { it.option == option }.joinToString("\n") { userCollection.findOneById(it.tgUser)?.name ?: "<no user>" }}"
+            "$ret\n${this.votes
+                    .filter { it.option == option }
+                    .map {
+                        userCollection.findOneById(it.tgUser)?.name ?: "<no user>"
+                    }.joinToString("\n") {
+                        it
+                                .replace("(", "\\(")
+                                .replace(")", "\\)")
+                                .replace("[", "\\[")
+                                .replace("]", "\\]")
+                                .replace("*", "\\*")
+                                .replace("-", "\\-")
+                    }
+            }
+            }"
         }.joinToString("\n\n")
         return description
     }
