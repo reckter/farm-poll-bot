@@ -173,7 +173,7 @@ class PollBot(
         fun updater(chatId: String? = null): me.reckter.telegram.UpdateMessageBuilder.() -> Unit = {
 
             text(poll.toText())
-            parseMode(ParseMode.MARKDOWN)
+//            parseMode(ParseMode.MARKDOWN) TODO fix weird parsing issue in TG
 
 
             buildInlineKeyboard {
