@@ -154,12 +154,14 @@ class PollBot(
                         userCollection.findOneById(it.tgUser)?.name ?: "<no user>"
                     }.joinToString("\n") {
                         it
-                                .replace("(", "\\(")
-                                .replace(")", "\\)")
-                                .replace("[", "\\[")
-                                .replace("]", "\\]")
-                                .replace("*", "\\*")
-                                .replace("-", "\\-")
+                                .replace("(", "")
+                                .replace(")", "")
+                                .replace("[", "")
+                                .replace("]", "")
+                                .replace("*", "")
+                                .replace("-", "")
+                                .replace("<", "")
+                                .replace(">", "")
                     }
             }"
         }.joinToString("\n\n")
