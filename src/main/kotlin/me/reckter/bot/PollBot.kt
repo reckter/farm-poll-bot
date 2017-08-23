@@ -285,7 +285,11 @@ class PollBot(
         }.filterNotNull()
                 .filter(User::notify)
                 .map {
-                    telegram.getChatMember(it.id, group.id)
+                    try {
+                        telegram.getChatMember(it.id, group.id)
+                    } catch (e: Exception) {
+                        null
+                    }
                 }.filterNotNull().filter {
             it.status != ChatStatus.left && it.status != ChatStatus.kicked
         }
@@ -301,6 +305,21 @@ class PollBot(
 
         pollCollection.save(poll)
         updatePoll(poll)
+    }
+
+    @OnCommand("updateAllPost")
+    fun updateAll(message: Message, args: List<String>) {
+        if(message.user.id != telegram.adminChat) {
+            message.respond("You do not have persmission for that")
+            return
+        }
+        pollCollection.find().forEach {
+            try {
+                updatePoll(it)
+            } catch (e: Exception) {
+                telegram.sendExceptionErrorMessage(e, "Error updating Poll ${it.id}")
+            }
+        }
     }
 
     @OnCommand("latest")
