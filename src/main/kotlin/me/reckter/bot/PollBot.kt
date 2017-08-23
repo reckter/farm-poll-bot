@@ -2,6 +2,7 @@ package me.reckter.bot
 
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.experimental.runBlocking
 import me.reckter.GroupCollection
 import me.reckter.PollCollection
 import me.reckter.UserCollection
@@ -17,6 +18,7 @@ import me.reckter.telegram.model.GroupChat
 import me.reckter.telegram.model.InlineQuery
 import me.reckter.telegram.model.Message
 import me.reckter.telegram.model.update.CallbackQuery
+import me.reckter.telegram.requests.ChatAction
 import me.reckter.telegram.requests.InlineKeyboardButton
 import me.reckter.telegram.requests.InlineKeyboardMarkup
 import me.reckter.telegram.requests.ParseMode
@@ -313,13 +315,22 @@ class PollBot(
             message.respond("You do not have persmission for that")
             return
         }
-        pollCollection.find().forEach {
+        val polls = pollCollection.find()
+
+        val text = "updating ${polls.count()} polls"
+        println(text)
+        message.respond(text)
+        telegram.sendChatAction(message.chat.id, ChatAction.typing)
+        polls.forEach {
             try {
-                updatePoll(it)
+                runBlocking {
+                    updatePoll(it).await()
+                }
             } catch (e: Exception) {
                 telegram.sendExceptionErrorMessage(e, "Error updating Poll ${it.id}")
             }
         }
+        message.respond("done")
     }
 
     @OnCommand("latest")
