@@ -25,6 +25,9 @@ import me.reckter.telegram.requests.ParseMode
 import me.reckter.telegram.requests.inlineMode.*
 import me.reckter.user.Group
 import me.reckter.user.User
+import org.bson.BSON
+import org.bson.BsonDocument
+import org.bson.conversions.Bson
 import org.litote.kmongo.findOneById
 import org.litote.kmongo.save
 import java.time.LocalDate
@@ -155,17 +158,17 @@ class PollBot(
                     .map {
                         userCollection.findOneById(it.tgUser)?.name ?: "<no user>"
                     }.joinToString("\n") {
-                        it
-                                .replace("(", "")
-                                .replace(")", "")
-                                .replace("[", "")
-                                .replace("]", "")
-                                .replace("*", "")
-                                .replace("-", "")
-                                .replace("<", "")
-                                .replace(">", "")
-                                .replace("[^\\x20-\\x7e]", "")
-                    }
+                it
+                        .replace("(", "")
+                        .replace(")", "")
+                        .replace("[", "")
+                        .replace("]", "")
+                        .replace("*", "")
+                        .replace("-", "")
+                        .replace("<", "")
+                        .replace(">", "")
+                        .replace("[^\\x20-\\x7e]", "")
+            }
             }"
         }.joinToString("\n\n")
         return description
@@ -311,11 +314,18 @@ class PollBot(
 
     @OnCommand("updateAllPost")
     fun updateAll(message: Message, args: List<String>) {
-        if(message.user.id != telegram.adminChat) {
+        if (message.user.id != telegram.adminChat) {
             message.respond("You do not have persmission for that")
             return
         }
-        val polls = pollCollection.find()
+
+        val polls =
+                if (args.size > 1) {
+                    pollCollection.find()
+                            .sort(BsonDocument.parse("{date: -1 }"))
+                            .limit(args[1].toInt())
+                } else
+                    pollCollection.find()
 
         val text = "updating ${polls.count()} polls"
         println(text)
@@ -362,12 +372,11 @@ class PollBot(
         }
 
 
-
         val toPost = polls.filter { poll ->
             polls.none { it.previousPollId == poll.id }
         }
 
-        if(toPost.isEmpty()) {
+        if (toPost.isEmpty()) {
             message.respond("No current Polls (you cann access) found!")
         }
 
