@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS  -jar ./target/*.jar
+web: java $JAVA_OPTS -Xmx2g -jar ./target/*.jar

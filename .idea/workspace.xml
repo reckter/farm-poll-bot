@@ -2,35 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="226fb8a4-9106-43e3-88a6-4254a6bff813" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/GroupCollection.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/GroupCollection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/KMongoConfig$Companion.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/KMongoConfig$Companion.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/KMongoConfig.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/KMongoConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/PollCollection.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/PollCollection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/UserCollection.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/UserCollection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/MainKt$main$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/MainKt$main$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/MainKt.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/MainKt.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$2.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$createPoll$message$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot$createPoll$message$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/PollBot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$2.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$3$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$3$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$3.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$setPollingDay$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$subscribeCallback$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$subscribeCallback$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$updateSettings$1$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$updateSettings$1$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$updateSettings$1.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot$updateSettings$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBotKt.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/bot/SettingsBotKt.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/poll/Poll.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/poll/Poll.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/poll/Post.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/poll/Post.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/poll/Vote.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/poll/Vote.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/user/Group.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/user/Group.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/reckter/user/User.class" afterPath="$PROJECT_DIR$/target/classes/me/reckter/user/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/farm-poll-bot.iml" afterPath="$PROJECT_DIR$/farm-poll-bot.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/PollBot.kt" afterPath="$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/PollBot.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -55,11 +27,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="178">
               <caret line="34" column="28" lean-forward="false" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Procfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="27" lean-forward="false" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -70,16 +52,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="171">
               <caret line="329" column="0" lean-forward="false" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RealCall.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/squareup/okhttp3/okhttp/3.3.0/okhttp-3.3.0-sources.jar!/okhttp3/RealCall.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="189" column="0" lean-forward="false" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -141,6 +113,7 @@
         <option value="$PROJECT_DIR$/src/main/kotlin/me/reckter/bot/PollBot.kt" />
         <option value="$MAVEN_REPOSITORY$/me/reckter/telegramBotApi/0.21.8/telegramBotApi-0.21.8.jar!/me/reckter/telegram/Telegram.class" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/Procfile" />
       </list>
     </option>
   </component>
@@ -704,12 +677,12 @@
       <workItem from="1493290062807" duration="656000" />
       <workItem from="1497111227612" duration="409000" />
       <workItem from="1503343010960" duration="4102000" />
-      <workItem from="1503468575464" duration="3636000" />
+      <workItem from="1503468575464" duration="3998000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48971000" />
+    <option name="totallyTimeSpent" value="49333000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -725,7 +698,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47517732" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47517732" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2630458" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1023,13 +996,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/settings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -1185,6 +1151,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
           <caret line="34" column="28" lean-forward="false" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="27" lean-forward="false" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
           <folding />
         </state>
       </provider>
