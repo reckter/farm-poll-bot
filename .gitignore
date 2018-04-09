@@ -1,2 +1,12 @@
 target/
 .idea/
+
+kobaltBuild/test-classes/
+src/main/resources/
+src/test/
+
+.DS_Store
+
+*.iml
+
+
